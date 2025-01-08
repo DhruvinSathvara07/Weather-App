@@ -1,87 +1,203 @@
+/* Global Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
 #img-fluid {
     width: 100%;
     height: 100vh;
-    /* background-image: url(https://png.pngtree.com/thumb_back/fh260/background/20220313/pngtree-blue-sky-and-white-clouds-in-sunny-weather-in-summer-image_1008803.jpg); */
-    /* background: linear-gradient(#F8FAFC, red); */
-    background-color: #96C9F4;
-    background-repeat: no-repeat;
-    background-position: center;
+    /* background: linear-gradient(to bottom, #87CEEB, #1E90FF) !important; */
     background-size: cover;
-    /* border: 2px solid !important; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .box {
     width: 100%;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .weather_header {
     width: 500px;
-    height: 240px;
-    background-color: #B7E0FF;
-    backdrop-filter: blur(50px);
+    height: 250px;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    border-radius: 15px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.weather_header:hover {
+    transform: translateY(-10px);
 }
 
 .input {
-    width: 200px;
-    height: 40px;
+    width: 250px;
+    height: 50px;
     border: none;
-    outline: none;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    padding: 22px 22px 22px 22px !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.input:focus {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 #btn {
-    width: 110px;
-    height: 55px;
-    background-color: black;
-    border-radius: 20px;
+    width: 120px;
+    height: 50px;
+    background: linear-gradient(to right, #6A5ACD, #00BFFF);
+    border: none;
+    border-radius: 25px;
+    color: white !important;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.weather {
-    padding: 50px 50px 50px 50px;
+#btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(to right, #00BFFF, #6A5ACD);
 }
 
 .cardContainer {
-    width: fit-content;
-    position: relative;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    animation: slideIn 1s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .card {
     position: relative;
     width: 300px;
-    height: 250px;
+    height: 350px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 20px 10px;
-    border-radius: 10px;
-    backdrop-filter: blur(30px) !important;
-    background-color: rgba(0, 0, 0, 0.053) !important;
-    border: 1px solid rgba(255, 255, 255, 0.089);
-    cursor: pointer;
+    justify-content: space-around;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.card:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.card:hover:after {
+    opacity: 1;
 }
 
 .city {
-    font-weight: 700;
-    font-size: 1.3em;
-    letter-spacing: 1.2px;
-    color: white !important;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #333;
+    text-shadow: 0px 2px 5px rgba(255, 255, 255, 0.6);
+    transition: color 0.3s ease-in-out;
 }
 
-.weather {
-    font-weight: 500;
-    font-size: 0.7em;
-    letter-spacing: 1.2px;
-    color: rgb(197, 197, 197) !important;
+.city:hover {
+    color: #6A5ACD;
 }
 
 .temp {
-    font-size: 1.8em;
-    color: white !important;
+    font-size: 2.5rem;
+    color: #1E90FF;
+    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.imageicon {
+    width: 100px;
+    height: 100px;
+    animation: rotateIcon 2s linear infinite;
+}
+
+/* @keyframes rotateIcon {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+} */
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .weather_header {
+        width: 90%;
+    }
+
+    .input {
+        width: 90%;
+    }
+
+    #btn {
+        width: 90%;
+    }
+
+    .card {
+        width: 90%;
+    }
 }
